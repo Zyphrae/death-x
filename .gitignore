@@ -1,0 +1,13 @@
+build/
+deps/
+tools/
+PROJECT_BRIEF.txt
+.DS_Store
+.cache/
+.vscode/
+
+*.dll
+*.dylib
+*.geode
+*.lib
+*.pdb

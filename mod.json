@@ -1,0 +1,147 @@
+{
+	"geode": "5.7.1",
+	"gd": {
+		"mac": "2.2081"
+	},
+	"id": "deathxteam.death_x",
+	"name": "Death X",
+	"version": "v1.0.4",
+	"developer": "Death X Contributors",
+	"description": "Places a small X at every death position.",
+	"repository": "https://github.com/Zyphrae/death-x",
+	"links": {
+		"source": "https://github.com/Zyphrae/death-x"
+	},
+	"issues": {
+		"info": "Report issues on GitHub with your Geometry Dash version, Geode version, platform, and steps to reproduce.",
+		"url": "https://github.com/Zyphrae/death-x/issues"
+	},
+	"settings": {
+		"enabled": {
+			"type": "bool",
+			"name": "Enable Death X",
+			"description": "Places X markers when you die.",
+			"default": true
+		},
+		"maximum-marker-count": {
+			"type": "int",
+			"name": "Maximum Marker Count",
+			"description": "The oldest marker is removed first when this limit is exceeded. Use the manual override below for values above 250.",
+			"default": 50,
+			"min": 1,
+			"max": 250,
+			"control": {
+				"input": true,
+				"slider": true,
+				"slider-step": 1,
+				"arrows": true,
+				"big-arrows": true
+			}
+		},
+		"maximum-marker-count-override": {
+			"type": "int",
+			"name": "Manual Marker Count Override",
+			"description": "Set this to 0 to use the slider above. Type a value up to 10000 to use a higher marker limit.",
+			"default": 0,
+			"min": 0,
+			"max": 10000,
+			"control": {
+				"input": true,
+				"slider": false,
+				"arrows": true,
+				"big-arrows": true,
+				"arrow-step": 1,
+				"big-arrow-step": 100
+			}
+		},
+		"merge-nearby-deaths": {
+			"type": "bool",
+			"name": "Merge Nearby Deaths",
+			"description": "Deaths near an existing marker intensify that marker instead of creating another X.",
+			"default": false
+		},
+		"merge-radius": {
+			"type": "float",
+			"name": "Merge Radius",
+			"description": "How close a death must be to an existing marker to merge with it.",
+			"default": 18.0,
+			"min": 4.0,
+			"max": 90.0,
+			"control": {
+				"input": true,
+				"slider": true,
+				"slider-step": 1.0,
+				"arrows": true,
+				"big-arrows": false
+			}
+		},
+		"ignore-start-seconds": {
+			"type": "float",
+			"name": "Ignore Start Seconds",
+			"description": "Deaths this soon after an attempt starts are ignored.",
+			"default": 0.5,
+			"min": 0.0,
+			"max": 5.0,
+			"control": {
+				"input": true,
+				"slider": true,
+				"slider-step": 0.1,
+				"arrows": true,
+				"big-arrows": false
+			}
+		},
+		"color-step-deaths": {
+			"type": "int",
+			"name": "Deaths Per Color Step",
+			"description": "How many merged deaths it takes before a marker moves to the next color.",
+			"default": 5,
+			"min": 1,
+			"max": 10,
+			"control": {
+				"input": true,
+				"slider": true,
+				"slider-step": 1,
+				"arrows": true,
+				"big-arrows": false
+			}
+		},
+		"marker-size": {
+			"type": "float",
+			"name": "Marker Size",
+			"description": "Visual size of each X marker.",
+			"default": 9.0,
+			"min": 4.0,
+			"max": 24.0,
+			"control": {
+				"input": true,
+				"slider": true,
+				"slider-step": 0.5,
+				"arrows": true,
+				"big-arrows": false
+			}
+		},
+		"marker-opacity": {
+			"type": "int",
+			"name": "Marker Opacity",
+			"description": "Opacity of each X marker.",
+			"default": 220,
+			"min": 0,
+			"max": 255,
+			"control": {
+				"input": true,
+				"slider": true,
+				"slider-step": 1,
+				"arrows": true,
+				"big-arrows": true
+			}
+		}
+	},
+	"dependencies": {
+		"geode.node-ids": ">=v1.23.3"
+	},
+	"tags": [
+		"utility",
+		"gameplay",
+		"offline"
+	]
+}
