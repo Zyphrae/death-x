@@ -5,6 +5,7 @@ PROJECT_BRIEF.txt
 .DS_Store
 .cache/
 .vscode/
+tmp/
 
 *.dll
 *.dylib

@@ -1,3 +1,10 @@
+# v1.0.5
+
+- Replaces the logo with a transparent-background icon.
+- Enlarges the cube, trail, red X, and spike in the icon.
+- Changes the icon spike fill from gray to black.
+- Moves the cube closer to the spike collision point in the icon.
+
 # v1.0.4
 
 - Adds a custom Geode icon.

@@ -5,7 +5,7 @@
 	},
 	"id": "deathxteam.death_x",
 	"name": "Death X",
-	"version": "v1.0.4",
+	"version": "v1.0.5",
 	"developer": "Death X Contributors",
 	"description": "Places a small X at every death position.",
 	"repository": "https://github.com/Zyphrae/death-x",

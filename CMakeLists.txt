@@ -10,7 +10,7 @@ else()
     set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64")
 endif()
 
-project(DeathX VERSION 1.0.4)
+project(DeathX VERSION 1.0.5)
 
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS src/*.cpp)
 
