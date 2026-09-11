@@ -5,7 +5,7 @@ This repository is prepared for public source publishing and reproducible multi-
 Before submitting to the Geode index:
 
 1. Push the complete source, logo, license, metadata, and workflow to the public GitHub repository.
-2. Confirm the `Build Death X` workflow passes on Windows, macOS, Android 32-bit, and Android 64-bit.
+2. Confirm the `Build Death X` workflow passes on Windows and macOS.
 3. Download the merged `Death-X` Actions artifact and playtest it on every platform declared in `mod.json`.
 4. Fix any reproducible crashes or common bugs before submitting.
 5. Create and push a version tag matching `mod.json`, `v1.0.0`. The workflow will build and create the GitHub release automatically.
@@ -24,8 +24,6 @@ Current platform status:
 - macOS platformer mode: preliminary testing passed; more testing planned
 - macOS dual mode: tested
 - Windows: package build verified; runtime playtest pending
-- Android 32-bit: package build verified; runtime playtest pending
-- Android 64-bit: package build verified; runtime playtest pending
-- iOS: not packaged
+- Android and iOS: not declared for the first release
 
-Do not add iOS to `mod.json` until its binary is built and included in the `.geode` package.
+Do not add Android or iOS to `mod.json` until their binaries are built and playtested.

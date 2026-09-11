@@ -8,4 +8,4 @@
 - Adds a pause-menu button for clearing active markers.
 - Detects common noclip behavior with or without Eclipse and can ignore the remainder of a noclip attempt.
 - Prevents duplicate and nested death callbacks from creating extra markers.
-- Includes Windows x64, universal macOS, Android 32-bit ARM, and Android 64-bit ARM support.
+- Includes Windows x64 and universal macOS support.

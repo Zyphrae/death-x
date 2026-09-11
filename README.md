@@ -8,7 +8,7 @@ A lightweight Geode mod for Geometry Dash that marks each death position with a 
 - Ignores noclip collision attempts unless they result in a real death.
 - Detects noclip through Eclipse, ignore-damage state, or survived death collisions.
 - Can ignore the rest of an attempt after noclip is used.
-- Supports a configurable FIFO marker limit with a manual override up to 1000.
+- Supports a configurable marker limit with a manual override up to 1000.
 - Can merge nearby deaths into one marker and intensify marker color.
 - Briefly glows the merged marker so repeated deaths are easier to read.
 - Exposes marker size and opacity settings.
@@ -20,15 +20,13 @@ Eclipse integration is optional.
 
 - Geometry Dash: 2.2081
 - Geode: 5.9.0 or compatible
-- Packaged platforms: Windows, macOS, Android 32-bit, and Android 64-bit
+- Packaged platforms: Windows and macOS
 
-The release intentionally does not declare iOS support because an iOS binary is not included.
+The first release intentionally does not declare Android or iOS support because those platforms have not been playtested.
 
 The included GitHub Actions workflow builds all declared platforms and merges them into one downloadable artifact.
 
 For a local Windows cross-build on macOS or Linux, install Zig, Ninja, and xwin; run `xwin splat`; set `ZIG_EXECUTABLE` and `XWIN_ROOT`; then pass `cmake/WindowsZigXwin.cmake` as the CMake toolchain file.
-
-For local Android builds, use NDK r29 or another NDK with Clang 19 or newer, and pass its path with `--ndk` or `ANDROID_NDK_ROOT`.
 
 ## Build
 
@@ -37,20 +35,16 @@ Install the Geode CLI and SDK, then build the required platforms from the reposi
 ```sh
 geode build --platform mac-os --config Release
 geode build --platform windows --config Release
-geode build --platform android32 --config Release
-geode build --platform android64 --config Release
 ```
 
-Merge the four generated packages into one release package:
+Merge the two generated packages into one release package:
 
 ```sh
 mkdir -p release
 cp build/deathxteam.death_x.geode release/deathxteam.death_x.geode
 geode package merge \
   release/deathxteam.death_x.geode \
-  build-win/deathxteam.death_x.geode \
-  build-android32/deathxteam.death_x.geode \
-  build-android64/deathxteam.death_x.geode
+  build-win/deathxteam.death_x.geode
 ```
 
 The merge command adds the other platform binaries to its first package argument.

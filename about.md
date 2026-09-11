@@ -8,4 +8,4 @@ Markers stay in the level until the configured limit removes the least-repeated 
 
 The normal marker limit slider goes up to 250. For large levels or testing, the manual override setting accepts values up to 1000.
 
-The packaged release supports Windows, macOS, and both 32-bit and 64-bit Android devices.
+The first packaged release supports Windows and macOS.

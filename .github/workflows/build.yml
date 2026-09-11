@@ -23,12 +23,6 @@ jobs:
             os: windows-latest
           - name: macOS
             os: macos-latest
-          - name: Android 32-bit
-            os: ubuntu-latest
-            target: Android32
-          - name: Android 64-bit
-            os: ubuntu-latest
-            target: Android64
 
     steps:
       - uses: actions/checkout@v7

@@ -1,7 +1,7 @@
 # Building Death X on macOS
 
 This repository contains the source files needed to build Death X as a Geode mod.
-The macOS build is one part of the multi-platform release package.
+The macOS build is one part of the Windows and macOS release package.
 
 ## Requirements
 
