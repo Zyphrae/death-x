@@ -1,3 +1,8 @@
+# v1.0.1
+
+- Fixes duplicate package metadata that prevented Geode Index submission.
+- Keeps the release limited to Windows and macOS.
+
 # v1.0.0
 
 - Initial public release.

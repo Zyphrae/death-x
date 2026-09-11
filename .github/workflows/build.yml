@@ -27,6 +27,9 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
+      - name: Validate mod metadata
+        run: python scripts/validate-mod-json.py mod.json
+
       - name: Build mod
         uses: geode-sdk/build-geode-mod@main
         with:

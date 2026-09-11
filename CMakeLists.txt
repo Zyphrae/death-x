@@ -11,7 +11,7 @@ elseif(APPLE AND NOT GEODE_TARGET_PLATFORM MATCHES "^(Win64|Android32|Android64)
     set(CMAKE_OSX_DEPLOYMENT_TARGET "11.0" CACHE STRING "Minimum macOS version" FORCE)
 endif()
 
-project(DeathX VERSION 1.0.0)
+project(DeathX VERSION 1.0.1)
 
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS src/*.cpp)
 
