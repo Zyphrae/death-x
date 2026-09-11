@@ -9,6 +9,7 @@ namespace deathx {
 
 namespace {
 constexpr float kStrokeWidthRatio = 0.22f;
+constexpr float kGlowAlphaRatio = 0.65f;
 constexpr int kGlowActionTag = 7401;
 
 constexpr std::array<ccColor4F, 11> kColorSteps = {{
@@ -41,12 +42,7 @@ void DeathMarker::attachTo(CCNode* parent, Settings const& settings) {
         return;
     }
 
-    m_glowNode = CCDrawNode::create();
-    m_glowNode->setPosition(m_position);
-    m_glowNode->setAnchorPoint(ccp(0.5f, 0.5f));
-    m_glowNode->setVisible(false);
-    parent->addChild(m_glowNode);
-
+    m_parent = parent;
     m_node = CCDrawNode::create();
     m_node->setPosition(m_position);
     m_node->setAnchorPoint(ccp(0.5f, 0.5f));
@@ -61,11 +57,13 @@ void DeathMarker::detach() {
     }
 
     if (!m_node) {
+        m_parent = nullptr;
         return;
     }
 
     m_node->removeFromParentAndCleanup(true);
     m_node = nullptr;
+    m_parent = nullptr;
 }
 
 void DeathMarker::increaseIntensity(Settings const& settings) {
@@ -82,6 +80,10 @@ bool DeathMarker::contains(CCPoint position, float radius) const {
     auto const dx = m_position.x - position.x;
     auto const dy = m_position.y - position.y;
     return (dx * dx) + (dy * dy) <= radius * radius;
+}
+
+int DeathMarker::deathCount() const {
+    return m_deathCount;
 }
 
 void DeathMarker::redraw(Settings const& settings) {
@@ -107,7 +109,7 @@ void DeathMarker::redrawGlow(Settings const& settings) {
     auto const halfSize = settings.markerSize * 0.5f;
     auto const strokeWidth = std::max(2.0f, settings.markerSize * 0.5f);
     auto glowColor = color(settings);
-    glowColor.a = 0.65f;
+    glowColor.a *= kGlowAlphaRatio;
 
     m_glowNode->clear();
     m_glowNode->drawSegment(ccp(-halfSize, -halfSize), ccp(halfSize, halfSize), strokeWidth, glowColor);
@@ -115,8 +117,15 @@ void DeathMarker::redrawGlow(Settings const& settings) {
 }
 
 void DeathMarker::flashGlow(Settings const& settings) {
-    if (!m_glowNode) {
+    if (settings.markerOpacity <= 0 || !m_parent) {
         return;
+    }
+
+    if (!m_glowNode) {
+        m_glowNode = CCDrawNode::create();
+        m_glowNode->setPosition(m_position);
+        m_glowNode->setAnchorPoint(ccp(0.5f, 0.5f));
+        m_parent->addChild(m_glowNode, -1);
     }
 
     redrawGlow(settings);

@@ -4,6 +4,8 @@ namespace deathx {
 
 struct Settings {
     bool enabled = true;
+    bool pauseDuringNoclip = true;
+    bool countDeathAfterNoclip = false;
     int maximumMarkerCount = 50;
     bool mergeNearbyDeaths = false;
     float mergeRadius = 18.0f;

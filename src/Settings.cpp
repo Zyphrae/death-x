@@ -11,7 +11,7 @@ namespace deathx {
 namespace {
 constexpr int kMinimumMarkerCount = 1;
 constexpr int kMaximumMarkerCount = 250;
-constexpr int kMaximumManualMarkerCount = 10000;
+constexpr int kMaximumManualMarkerCount = 1000;
 constexpr float kMinimumMergeRadius = 4.0f;
 constexpr float kMaximumMergeRadius = 90.0f;
 constexpr float kMinimumIgnoreStartSeconds = 0.0f;
@@ -29,6 +29,8 @@ Settings Settings::load() {
 
     Settings settings;
     settings.enabled = mod->getSettingValue<bool>("enabled");
+    settings.pauseDuringNoclip = mod->getSettingValue<bool>("pause-during-noclip");
+    settings.countDeathAfterNoclip = mod->getSettingValue<bool>("count-death-after-noclip");
     auto const sliderMarkerCount = std::clamp(
         mod->getSettingValue<int>("maximum-marker-count"),
         kMinimumMarkerCount,

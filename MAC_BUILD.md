@@ -1,12 +1,12 @@
 # Building Death X on macOS
 
 This repository contains the source files needed to build Death X as a Geode mod.
-The current packaged release target is macOS.
+The macOS build is one part of the multi-platform release package.
 
 ## Requirements
 
 - Geometry Dash 2.2081
-- Geode SDK 5.7.1 or compatible
+- Geode SDK 5.9.0 or compatible
 - CMake
 - Xcode command line tools
 - Geode CLI
@@ -30,6 +30,8 @@ Geometry Dash with Geode enabled.
 
 The default settings are:
 
+- Pause During Noclip: on
+- Count Death After Noclip: off
 - Ignore Start Seconds: `0.5`
 - Merge Nearby Deaths: off
 - Deaths Per Color Step: `5`

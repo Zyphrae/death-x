@@ -14,7 +14,6 @@ public:
     void trimToLimit(Settings const& settings);
     void refresh(Settings const& settings);
 
-    [[nodiscard]] bool hasLayer() const;
     [[nodiscard]] std::size_t size() const;
 
 private:
@@ -22,7 +21,7 @@ private:
     std::deque<DeathMarker> m_markers;
 
     [[nodiscard]] DeathMarker* findMarkerNear(cocos2d::CCPoint position, float radius);
-    void removeOldest();
+    void removeLeastIntense();
 };
 
 }

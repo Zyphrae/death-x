@@ -16,9 +16,11 @@ public:
     void refresh(Settings const& settings);
 
     [[nodiscard]] bool contains(cocos2d::CCPoint position, float radius) const;
+    [[nodiscard]] int deathCount() const;
 
 private:
     cocos2d::CCPoint m_position;
+    cocos2d::CCNode* m_parent = nullptr;
     cocos2d::CCDrawNode* m_node = nullptr;
     cocos2d::CCDrawNode* m_glowNode = nullptr;
     int m_deathCount = 1;

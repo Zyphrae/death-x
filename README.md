@@ -5,42 +5,64 @@ A lightweight Geode mod for Geometry Dash that marks each death position with a 
 ## Features
 
 - Adds an X marker every time the player dies.
-- Supports a configurable FIFO marker limit with a manual override up to 10000.
+- Ignores noclip collision attempts unless they result in a real death.
+- Detects noclip through Eclipse, ignore-damage state, or survived death collisions.
+- Can ignore the rest of an attempt after noclip is used.
+- Supports a configurable FIFO marker limit with a manual override up to 1000.
 - Can merge nearby deaths into one marker and intensify marker color.
 - Briefly glows the merged marker so repeated deaths are easier to read.
 - Exposes marker size and opacity settings.
-- Adds a pause-menu clear button for the current run.
+- Shows a pause-menu clear button only when the current run has markers.
+
+Eclipse integration is optional.
 
 ## Support
 
 - Geometry Dash: 2.2081
-- Geode: 5.7.1 or compatible
-- Packaged platform: macOS
+- Geode: 5.9.0 or compatible
+- Packaged platforms: Windows, macOS, Android 32-bit, and Android 64-bit
 
-The source is portable Geode/C++, but the current release package only includes a macOS binary. Build and merge the other platform binaries before marking Windows, Android, or iOS as supported.
+The release intentionally does not declare iOS support because an iOS binary is not included.
+
+The included GitHub Actions workflow builds all declared platforms and merges them into one downloadable artifact.
+
+For a local Windows cross-build on macOS or Linux, install Zig, Ninja, and xwin; run `xwin splat`; set `ZIG_EXECUTABLE` and `XWIN_ROOT`; then pass `cmake/WindowsZigXwin.cmake` as the CMake toolchain file.
+
+For local Android builds, use NDK r29 or another NDK with Clang 19 or newer, and pass its path with `--ndk` or `ANDROID_NDK_ROOT`.
 
 ## Build
 
-Install the Geode CLI and SDK, then build from the repository root:
+Install the Geode CLI and SDK, then build the required platforms from the repository root:
 
 ```sh
-geode build --config Release
+geode build --platform mac-os --config Release
+geode build --platform windows --config Release
+geode build --platform android32 --config Release
+geode build --platform android64 --config Release
 ```
 
-The packaged mod is written to:
+Merge the four generated packages into one release package:
 
-```text
-build/deathxteam.death_x.geode
+```sh
+mkdir -p release
+cp build/deathxteam.death_x.geode release/deathxteam.death_x.geode
+geode package merge \
+  release/deathxteam.death_x.geode \
+  build-win/deathxteam.death_x.geode \
+  build-android32/deathxteam.death_x.geode \
+  build-android64/deathxteam.death_x.geode
 ```
+
+The merge command adds the other platform binaries to its first package argument.
 
 ## Install Locally
 
 ```sh
-geode package install build/deathxteam.death_x.geode
+geode package install release/deathxteam.death_x.geode
 ```
 
-Restart Geometry Dash after installing.
+Restart Geometry Dash after installing. Only install a package containing a binary for the device's platform.
 
 ## Publishing Notes
 
-To publish on the Geode index, create a public GitHub release with the built `.geode` file, then submit the direct download link with the Geode CLI. Do not claim non-macOS platforms until those binaries are included.
+To publish on the Geode index, create a public GitHub release with the merged `.geode` file, then submit the direct download link with the Geode CLI.

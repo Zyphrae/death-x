@@ -2,6 +2,8 @@
 
 #include <Geode/Geode.hpp>
 
+#include <algorithm>
+
 using namespace geode::prelude;
 
 namespace deathx {
@@ -52,7 +54,7 @@ void MarkerManager::clear() {
 
 void MarkerManager::trimToLimit(Settings const& settings) {
     while (static_cast<int>(m_markers.size()) > settings.maximumMarkerCount) {
-        removeOldest();
+        removeLeastIntense();
     }
 }
 
@@ -62,10 +64,6 @@ void MarkerManager::refresh(Settings const& settings) {
     }
 
     trimToLimit(settings);
-}
-
-bool MarkerManager::hasLayer() const {
-    return m_container != nullptr;
 }
 
 std::size_t MarkerManager::size() const {
@@ -82,13 +80,20 @@ DeathMarker* MarkerManager::findMarkerNear(CCPoint position, float radius) {
     return nullptr;
 }
 
-void MarkerManager::removeOldest() {
+void MarkerManager::removeLeastIntense() {
     if (m_markers.empty()) {
         return;
     }
 
-    m_markers.front().detach();
-    m_markers.pop_front();
+    auto marker = std::min_element(
+        m_markers.begin(),
+        m_markers.end(),
+        [](DeathMarker const& left, DeathMarker const& right) {
+            return left.deathCount() < right.deathCount();
+        }
+    );
+    marker->detach();
+    m_markers.erase(marker);
 }
 
 }

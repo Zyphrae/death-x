@@ -1,4 +1,6 @@
 build/
+build-*/
+build-platforms/
 deps/
 tools/
 PROJECT_BRIEF.txt
@@ -6,6 +8,9 @@ PROJECT_BRIEF.txt
 .cache/
 .vscode/
 tmp/
+geode-deps/
+cmake/
+exec-*.png
 
 *.dll
 *.dylib
