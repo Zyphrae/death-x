@@ -8,13 +8,13 @@ Before submitting to the Geode index:
 2. Confirm the `Build Death X` workflow passes on Windows and macOS.
 3. Download the merged `Death-X` Actions artifact and playtest it on every platform declared in `mod.json`.
 4. Fix any reproducible crashes or common bugs before submitting.
-5. Create and push a version tag matching `mod.json`, `v1.0.1`. The workflow will build and create the GitHub release automatically.
+5. Create and push a version tag matching `mod.json`, `v1.0.2`. The workflow will build and create the GitHub release automatically.
 6. Never replace an existing release asset. Increase the version and create a new release instead.
 7. Submit the direct release asset URL with `geode index mods create <download-url>`, or submit it from your account page on the Geode website.
 
-For v1.0.1, the expected asset URL is:
+For v1.0.2, the expected asset URL is:
 
-`https://github.com/Zyphrae/death-x/releases/download/v1.0.1/deathxteam.death_x.geode`
+`https://github.com/Zyphrae/death-x/releases/download/v1.0.2/deathxteam.death_x.geode`
 
 The Index reviewer makes the final decision. Keep descriptions accurate, preserve the source history, use the Geode APIs, give nodes mod-prefixed IDs, and document any real incompatibilities.
 

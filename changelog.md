@@ -1,3 +1,8 @@
+# v1.0.2
+
+- Resizes the mod logo to meet the Geode Index image limit.
+- Adds automated logo validation to prevent oversized release images.
+
 # v1.0.1
 
 - Fixes duplicate package metadata that prevented Geode Index submission.

@@ -30,6 +30,9 @@ jobs:
       - name: Validate mod metadata
         run: python scripts/validate-mod-json.py mod.json
 
+      - name: Validate mod logo
+        run: python scripts/validate-logo.py logo.png
+
       - name: Build mod
         uses: geode-sdk/build-geode-mod@main
         with:
